@@ -1,0 +1,1 @@
+I am a PhD researcher at Cardiff University Business School in the UK, and this is part of a visualization project for my paper. You may find some of the code in this project helpful to anyone with data visualization needs.
