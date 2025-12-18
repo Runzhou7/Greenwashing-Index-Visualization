@@ -101,7 +101,7 @@ indicator = st.radio(
 )
 
 # =========================
-# 指标配置（核心）
+# 指标配置
 # =========================
 indicator_config = {
     "CCII": {
@@ -373,26 +373,38 @@ st.markdown("---")
 # =========================
 # 计数器
 # =========================
+COUNTER_FILE = "like_counter.csv"
 
+def load_counter():
+    if not os.path.exists(COUNTER_FILE):
+        df = pd.DataFrame(
+            {"like": [0], "really_like": [0]}
+        )
+        df.to_csv(COUNTER_FILE, index=False)
+    return pd.read_csv(COUNTER_FILE)
+
+def save_counter(df):
+    df.to_csv(COUNTER_FILE, index=False)
+
+st.markdown("---")
 st.subheader("Do you like these maps? ⭐")
 
-# 初始化计数器
-if "like_count" not in st.session_state:
-    st.session_state.like_count = 0
-if "star_count" not in st.session_state:
-    st.session_state.star_count = 0
+df_counter = load_counter()
 
 col1, col2 = st.columns(2)
 
 with col1:
     if st.button("⭐ Like"):
-        st.session_state.like_count += 1
-    st.write(f"Likes: {st.session_state.like_count}")
+        df_counter.loc[0, "like"] += 1
+        save_counter(df_counter)
+    st.write(f"Likes: {int(df_counter.loc[0, 'like'])}")
 
 with col2:
     if st.button("⭐⭐ Really Like"):
-        st.session_state.star_count += 1
-    st.write(f"Really Likes: {st.session_state.star_count}")
+        df_counter.loc[0, "really_like"] += 1
+        save_counter(df_counter)
+    st.write(f"Really Likes: {int(df_counter.loc[0, 'really_like'])}")
+
 
 st.markdown("---")
 
@@ -405,5 +417,6 @@ st.markdown(
     Zheng, R., Li, Q., & Mobarek, A. (2026). *Climate Commitments, Greenwashing, and Regulation: Global Evidence from Natural Language Processing Based Indices* (Working Paper).  
     """
 )
+
 
 
