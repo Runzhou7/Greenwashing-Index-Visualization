@@ -36,7 +36,7 @@ st.markdown(
 # =========================
 st.markdown(
     """
-    This interactive map shows the cross-country distribution of the following indices:
+    These interactive maps show the cross-country distribution of the following indices:
 
     •  **Climate Commitment Intensity Index (CCII)**  
     Measures the intensity of corporate climate commitments based on CDP disclosures.
@@ -405,4 +405,5 @@ st.markdown(
     Zheng, R., Li, Q., & Mobarek, A. (2026). *Climate Commitments, Greenwashing, and Regulation: Global Evidence from Natural Language Processing Based Indices* (Working Paper).  
     """
 )
+
 
