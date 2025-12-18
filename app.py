@@ -373,38 +373,34 @@ st.markdown("---")
 # =========================
 # 计数器
 # =========================
-COUNTER_FILE = "like_counter.csv"
+COUNTER_FILE = "like_counter.txt"
 
 def load_counter():
-    if not os.path.exists(COUNTER_FILE):
-        df = pd.DataFrame(
-            {"like": [0], "really_like": [0]}
-        )
-        df.to_csv(COUNTER_FILE, index=False)
-    return pd.read_csv(COUNTER_FILE)
+    with open(COUNTER_FILE, "r") as f:
+        like, really_like = f.read().strip().split(",")
+    return int(like), int(really_like)
 
-def save_counter(df):
-    df.to_csv(COUNTER_FILE, index=False)
+def save_counter(like, really_like):
+    with open(COUNTER_FILE, "w") as f:
+        f.write(f"{like},{really_like}")
 
-st.markdown("---")
 st.subheader("Do you like these maps? ⭐")
 
-df_counter = load_counter()
+like_count, really_like_count = load_counter()
 
 col1, col2 = st.columns(2)
 
 with col1:
     if st.button("⭐ Like"):
-        df_counter.loc[0, "like"] += 1
-        save_counter(df_counter)
-    st.write(f"Likes: {int(df_counter.loc[0, 'like'])}")
+        like_count += 1
+        save_counter(like_count, really_like_count)
+    st.write(f"Likes: {like_count}")
 
 with col2:
     if st.button("⭐⭐ Really Like"):
-        df_counter.loc[0, "really_like"] += 1
-        save_counter(df_counter)
-    st.write(f"Really Likes: {int(df_counter.loc[0, 'really_like'])}")
-
+        really_like_count += 1
+        save_counter(like_count, really_like_count)
+    st.write(f"Really Likes: {really_like_count}")
 
 st.markdown("---")
 
@@ -417,6 +413,7 @@ st.markdown(
     Zheng, R., Li, Q., & Mobarek, A. (2026). *Climate Commitments, Greenwashing, and Regulation: Global Evidence from Natural Language Processing Based Indices* (Working Paper).  
     """
 )
+
 
 
 
