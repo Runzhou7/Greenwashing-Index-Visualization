@@ -39,13 +39,13 @@ st.markdown(
     These interactive maps show the cross-country distribution of the following indices:
 
     •  **Climate Commitment Intensity Index (CCII)**  
-    Measures the intensity of corporate climate commitments based on CDP disclosures.
+    Measures the intensity of corporate climate commitments based on CDP disclosures, with higher values indicating stronger climate commitments.
 
     •  **GWE (Greenwashing based on E-score)**  
-    Measures greenwashing behavior using environmental scores.
+    Measures greenwashing behavior using [environmental scores](https://www.lseg.com/en/data-analytics/sustainable-finance/esg-scores), with higher values indicating a greater degree of greenwashing.
 
     •  **GWGHG (Greenwashing based on carbon emissions)**  
-    Measures greenwashing behavior using firms' Scope 1 2 and 3 greenhouse gas emissions.
+    Measures greenwashing behavior using firms'[Scope 1 2 and 3](https://www.deloitte.com/uk/en/issues/climate/zero-in-on-scope-1-2-and-3-emissions.html)greenhouse gas emissions，with higher values indicating a greater degree of greenwashing.
 
     In addition to the global map, users can also explore:
 
@@ -410,10 +410,19 @@ st.markdown("---")
 st.markdown(
     """
     **References**  
-    Zheng, R., Li, Q., & Mobarek, A. (2026). *Climate Commitments, Greenwashing, and Regulation: Global Evidence from Natural Language Processing Based Indices* (Working Paper).  
+    Zheng, R., Li, Q., & Mobarek, A. (2026). *Climate Commitments, Greenwashing, and Regulation: Global Evidence from Natural Language Processing Based Indices* (Working...).  
     """
 )
 
+# =========================
+# Disclaimer
+# =========================
+st.markdown(
+    """
+    **Disclaimer**
+    The views expressed in this paper are those of the authors and do not necessarily reflect the views of any affiliated institutions. All remaining errors and omissions are our own.
+    """
+)
 
 
 
